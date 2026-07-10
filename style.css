@@ -1,0 +1,14 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.intro-img{
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100svh;
+    display: block;
+    object-fit: cover;
+}
