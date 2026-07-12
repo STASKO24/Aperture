@@ -4,11 +4,19 @@
     box-sizing: border-box;
 }
 
-.intro-img{
+.intro-img {
     position: absolute;
-    left: 0;
-    width: 100%;
-    height: 100svh;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 420px;
     display: block;
     object-fit: cover;
 }
+
+.intro-img.fullscreen {
+    width: 100%;
+    height: 100svh;
+}
+

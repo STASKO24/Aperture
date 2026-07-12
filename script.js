@@ -1,5 +1,61 @@
 import {gsap} from "gsap";
 import {CustomEase} from "gsap/CustomEase";
 import {SplitText} from "gsap/SplitText";
+import {Flip} from "gsap/Flip";
 
-gsap.registerPlugin(SplitText, CustomEase);
+gsap.registerPlugin(SplitText, CustomEase, Flip);
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const introImages = document.querySelectorAll('.intro-img');
+
+
+    const introImgWidth = introImages[0].offsetWidth;
+    const introImgGap = 40;
+    const introImgRowWidth = introImgWidth * 7 + introImgGap * 6;
+    const intoImgRowX = (window.innerWidth - introImgRowWidth) / 2;
+    const introImgRowOffsetX = intoImgRowX - window.innerWidth * 1.3;
+
+
+    introImages.forEach((img, i) => {
+        const centredX = intoImgRowX + i * (introImgWidth + introImgGap) + introImgWidth / 2 - window.innerWidth / 2;
+        const centredOffsetX = introImgRowOffsetX + i * (introImgWidth + introImgGap) + introImgWidth / 2 - window.innerWidth / 2;
+
+
+        gsap.set(img, {
+            x: centredOffsetX,
+        })
+
+        img.dataset.centredX = centredX;
+    })
+
+    const tl = gsap.timeline({delay: 1});
+    introImages.forEach((img) => {
+        tl.to(img, {
+            x: parseFloat(img.dataset.centredX),
+            ease: 'power3.out',
+            duration: 1.5,
+        }, "<0.025")
+    })
+
+
+    tl.to('.intro-img:nth-child(1), .intro-img:nth-child(2), .intro-img:nth-child(3)', {
+        x: '-100vw', ease: 'power2.in',
+        duration: 1.25
+    })
+
+    tl.to('.intro-img:nth-child(5), .intro-img:nth-child(6), .intro-img:nth-child(7)', {
+        x: '100vw', ease: 'power2.in',
+        duration: 1.25
+    }, '<')
+
+    tl.add(() => {
+        const heroImg = document.querySelector('.hero-img');
+        const heroImgState = Flip.getState(heroImg);
+        heroImg.classList.add('fullscreen');
+
+        Flip.from(heroImgState, {duration: 2, ease: 'power3.inOut'});
+    }, '<')
+
+
+})
