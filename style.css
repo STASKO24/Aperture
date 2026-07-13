@@ -13,6 +13,7 @@
     height: 420px;
     display: block;
     object-fit: cover;
+    will-change: transform;
 }
 
 .intro-img.fullscreen {
@@ -39,5 +40,5 @@
     background: white;
     width: 100%;
     transform-origin: left;
-
+    will-change: transform;
 }
