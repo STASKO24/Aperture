@@ -23,6 +23,12 @@ a, p {
     text-decoration: none;
 }
 
+.wrapper {
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+}
+
 .preloader-overlay {
     position: absolute;
     top: 0;
@@ -116,8 +122,14 @@ a, p {
     font-size: calc(128 / 16 * 1em);
     font-weight: normal;
     font-family: "Helvetica Now Display";
+    line-height: 1.2;
 }
 
 .hero-subheading {
     max-width: calc(340 / 16 * 1em);
+}
+
+.line {
+    position: relative;
+    will-change: transform;
 }
