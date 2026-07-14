@@ -9,8 +9,8 @@ gsap.registerPlugin(SplitText, CustomEase, Flip);
 document.addEventListener("DOMContentLoaded", () => {
     document.fonts.ready.then(() => {
         const introImages = document.querySelectorAll('.intro-img');
-        // const preloaderOverlay = document.querySelector('.preloader-overlay');
-        // const preloader = preloaderOverlay.querySelector('.preloader');
+        const preloaderOverlay = document.querySelector('.preloader-overlay');
+        const preloader = preloaderOverlay.querySelector('.preloader');
 
 
         const introImgWidth = introImages[0].offsetWidth;
@@ -45,25 +45,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const tl = gsap.timeline({delay: 1});
 
-        // tl.from(preloader, {
-        //     scaleX: 0,
-        //     duration: 1.2,
-        //     ease: "power2.out",
-        //     onComplete: () => {
-        //         gsap.set(preloader, {transformOrigin: "right"})
-        //     }
-        // })
-        //
-        // tl.to(preloader, {
-        //     scaleX: 0,
-        //     ease: "power2.out",
-        //     duration: 1,
-        // })
-        // tl.to(preloaderOverlay, {
-        //     clipPath: 'polygon(0% 0%, 100% 0, 100% 0%, 0% 0%)',
-        //     duration: 1.5,
-        //     ease: "power2.out",
-        // }, '<0.75')
+        tl.from(preloader, {
+            scaleX: 0,
+            duration: 1.2,
+            ease: "power2.out",
+            onComplete: () => {
+                gsap.set(preloader, {transformOrigin: "right"})
+            }
+        })
+
+        tl.to(preloader, {
+            scaleX: 0,
+            ease: "power2.out",
+            duration: 1,
+        })
+        tl.to(preloaderOverlay, {
+            clipPath: 'polygon(0% 0%, 100% 0, 100% 0%, 0% 0%)',
+            duration: 1.5,
+            ease: "power2.out",
+        }, '<0.75')
 
         introImages.forEach((img) => {
             tl.to(img, {
