@@ -8,6 +8,7 @@ gsap.registerPlugin(SplitText, CustomEase, Flip);
 
 document.addEventListener("DOMContentLoaded", () => {
     document.fonts.ready.then(() => {
+        CustomEase.create("hop", "M0,0 C0.019,0.161 0.062,0.45 0.243,0.689 0.392,0.885 0.698,1 1,1 ")
         const introImages = document.querySelectorAll('.intro-img');
         const preloaderOverlay = document.querySelector('.preloader-overlay');
         const preloader = preloaderOverlay.querySelector('.preloader');
@@ -68,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
         introImages.forEach((img) => {
             tl.to(img, {
                 x: parseFloat(img.dataset.centredX),
-                ease: 'power3.out',
+                ease: 'hop',
                 duration: 1.5,
             }, "<0.025")
         })
@@ -77,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
         tl.to('.intro-img:nth-child(1), .intro-img:nth-child(2), .intro-img:nth-child(3)', {
             x: '-100vw', ease: 'power2.in',
             duration: 1.25
-        })
+        },)
 
         tl.to('.intro-img:nth-child(5), .intro-img:nth-child(6), .intro-img:nth-child(7)', {
             x: '100vw', ease: 'power2.in',
